@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Message</title>
+     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: pink;
+            color: red;
+            font-size: 2em;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px; /* Ensures buttons stay side by side */
+            position: relative;
+        }
+        button {
+            font-size: 1em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: red;
+            color: white;
+        }
+        .no {
+            background-color: white;
+            color: red;
+            position: relative; /* Keeps initial position correct */
+            transition: transform 0.2s ease;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 30px;
+            display: none;
+        }
+        #yes-message {
+            color: green;
+        }
+        #no-message {
+            color: darkred;
+        }
+    </style>
+    <script>
+        function showMessage(answer) {
+            document.getElementById("yes-message").style.display = "none";
+            document.getElementById("no-message").style.display = "none";
+
+            if (answer === 'yes') {
+                document.getElementById("yes-message").style.display = "block";
+            } else {
+                document.getElementById("no-message").style.display = "block";
+            }
+        }
+
+        function moveNoButton() {
+            const button = document.getElementById("no-button");
+
+            const randomX = (Math.random() * 300) - 100; // Moves left/right
+            const randomY = (Math.random() * 300) - 100; // Moves up/down
+
+            button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+    </script>
+</head>
+<body>
+    <p>Will you be my Valentine? ❤️</p>
+    <div class="buttons">
+        <button class="yes" onclick="showMessage('yes')">Yes</button>
+        <button class="no" id="no-button" onmouseover="moveNoButton()">No</button>
+    </div>
+    <p id="yes-message" class="message">Congrats, this is your official invite to San Diego, love you my lady! 🥰</p>
+    <p id="no-message" class="message">You ain't catching this one gang. 💔</p>
+</body>
+</html>
